@@ -12,7 +12,7 @@
 
 运行 `go-cqhttp/下载的文件`, 根据提示填写 QQ 号和密码等信息, 然后再次运行
 
-在根目录执行 `npm run dev`, 然后根据 https://docs.go-cqhttp.org 文档进行开发即可
+在根目录执行 `npm run dev`, 然后根据 https://docs.go-cqhttp.org 文档进行开发
 
 ### 生产环境 (Linux)
 

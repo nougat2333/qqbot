@@ -11,7 +11,7 @@ listen(data => {
           {
             type: 'text',
             data: {
-              text: 'ws send'
+              text: 'ws reply'
             }
           }
         ]
