@@ -1,20 +1,10 @@
-const { listen, send } = require('./bot/ws')
-const dog = require('./service/dog')
+const { listen } = require('./bot/ws')
+const sendDogText = require('./handler/send-dog-text')
 
-listen(async data => {
+listen(data => {
   console.log(data)
 
   if (data.message_type === 'group' && data.message === '舔狗日记') {
-    send('send_group_msg', {
-      group_id: data.group_id,
-      message: [
-        {
-          type: 'text',
-          data: {
-            text: await dog.get()
-          }
-        }
-      ]
-    })
+    sendDogText(data)
   }
 })
