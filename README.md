@@ -12,7 +12,7 @@
 
 - 运行 `go-cqhttp/下载的文件`, 根据提示填写 QQ 号和密码等信息, 然后再次运行
 
-- 在根目录执行 `npm run dev`, 然后根据 https://docs.go-cqhttp.org 文档进行开发
+- 在根目录执行 `npm run dev`, 然后查看 https://docs.go-cqhttp.org 文档进行开发
 
 ### 生产环境 (Linux)
 
@@ -26,17 +26,25 @@
 
 ## 代码说明
 
+### 监听用户消息, 被动回复的场景
+
 ```js
-const { listen, reply, send } = require('./bot')
+const { listen, send } = require("./bot/ws");
 ```
 
 - `listen(data => {})`: 监听所有消息, 具体信息可以打印 data 查看
-- `reply(action, params)`: websocket 被动回复消息 (用户发消息, 机器人回复场景)
-- `send(action, params)`: http 主动发送消息 (机器人定时发送之类的需求, 主动推送场景)
+- `send(action, params)`: websocket 发送消息
 
-> action 和 params 可以查看 https://docs.go-cqhttp.org/api 文档进行开发
+### 定时发送/报警等, 主动推送的场景
 
+```js
+const { send } = require("./bot/http");
+```
+
+- `send(action, params)`: http 发送消息
+
+> 其中 action 和 params 可以查看 https://docs.go-cqhttp.org/api 文档进行开发
 
 ## 示例截图
 
-![舔狗日记](https://i.loli.net/2021/01/20/erWFcpRkKVvjsYd.png)
+![舔狗日记](https://user-images.githubusercontent.com/8413791/105276494-7d6a8e00-5bdc-11eb-8212-26b1943e9742.png)
