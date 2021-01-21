@@ -1,10 +1,10 @@
 const { listen } = require('./bot/ws')
-const sendDogDiary = require('./handler/send-dog-diary')
+const 舔狗日记 = require('./handler/舔狗日记')
 
 listen(data => {
   // console.log(data)
 
-  if (data.message_type === 'group' && data.message === '舔狗日记') {
-    sendDogDiary(data)
+  if (data.message_type === 'group' && data.message.includes('舔狗日记')) {
+    舔狗日记(data)
   }
 })
