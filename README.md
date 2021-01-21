@@ -29,7 +29,7 @@
 ### 监听用户消息, 被动回复的场景
 
 ```js
-const { listen, send } = require("./bot/ws");
+const { listen, send } = require('./bot/ws')
 ```
 
 - `listen(data => {})`: 监听所有消息, 具体信息可以打印 data 查看
@@ -38,12 +38,21 @@ const { listen, send } = require("./bot/ws");
 ### 定时发送/报警等, 主动推送的场景
 
 ```js
-const { send } = require("./bot/http");
+const { send } = require('./bot/http')
 ```
 
 - `send(action, params)`: http 发送消息
 
 > 其中 action 和 params 可以查看 https://docs.go-cqhttp.org/api 文档进行开发
+
+### 判断开发或生产环境
+
+```js
+process.env.NODE_ENV === 'development' // 开发
+process.env.NODE_ENV === 'production' // 生产
+```
+
+> 有时候我们需要在不同环境, 执行不同的逻辑
 
 ## 示例截图
 
