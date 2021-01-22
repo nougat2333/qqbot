@@ -1,10 +1,16 @@
 const { listen } = require('./bot/ws')
-const 舔狗日记 = require('./handler/舔狗日记')
+
+// 正则匹配 调用对应的 handler
+const handlerMap = new Map()
+handlerMap.set(/舔狗日记/, require('./handler/licking-dog-diary'))
 
 listen(data => {
   // console.log(data)
 
-  if (data.message_type === 'group' && data.message.includes('舔狗日记')) {
-    舔狗日记(data)
+  for (const [key, value] of handlerMap) {
+    if (key.test(data.message) && value[data.message_type]) {
+      value[data.message_type](data)
+      return
+    }
   }
 })

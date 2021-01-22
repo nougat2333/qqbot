@@ -1,12 +1,12 @@
 # qqbot
 
-> go-cqhttp 的 Node.js 机器人示例
+> 基于 go-cqhttp 的 Node.js 机器人
 
 ## 使用说明
 
 - 在 https://github.com/Mrs4s/go-cqhttp/releases 下载可执行文件, 放到 go-cqhttp 目录中, 并赋予执行权限
 
-- 安装 Node.js 环境: 在根目录执行 `npm install` 安装依赖
+- 安装 Node.js 环境 (建议 10.0 以上版本): 在根目录执行 `npm install` 安装依赖
 
 ### 开发环境
 
@@ -52,7 +52,7 @@ process.env.NODE_ENV === 'development' // 开发
 process.env.NODE_ENV === 'production' // 生产
 ```
 
-> 有时候我们需要在不同环境, 执行不同的逻辑
+> 有时候我们需要在不同环境, 读不同的配置或执行不同的逻辑
 
 ## 示例截图
 

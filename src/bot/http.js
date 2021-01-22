@@ -5,10 +5,9 @@ const http = axios.create({
   method: 'POST'
 })
 
-const send = (action, params) =>
-  http.post({ url: action, method: 'POST', data: params })
-
 module.exports = {
   http,
-  send
+  send(action, params) {
+    return http.post({ url: action, method: 'POST', data: params })
+  }
 }
