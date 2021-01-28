@@ -1,5 +1,5 @@
 const { send } = require('../bot/ws')
-const didNotGetUp = require('../service/did-not-get-up')
+const 舔狗日记 = require('../service/舔狗日记')
 
 module.exports = {
   async group(data) {
@@ -7,9 +7,15 @@ module.exports = {
       group_id: data.group_id,
       message: [
         {
+          type: 'reply',
+          data: {
+            id: data.message_id
+          }
+        },
+        {
           type: 'text',
           data: {
-            text: didNotGetUp.get()
+            text: await 舔狗日记.get()
           }
         }
       ]
@@ -22,7 +28,7 @@ module.exports = {
         {
           type: 'text',
           data: {
-            text: didNotGetUp.get()
+            text: await 舔狗日记.get()
           }
         }
       ]

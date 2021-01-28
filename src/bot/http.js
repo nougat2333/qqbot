@@ -1,7 +1,8 @@
 const axios = require('axios')
+const { HTTP_BASE_URL } = require('../config')
 
 const http = axios.create({
-  baseURL: 'http://0.0.0.0:5700',
+  baseURL: HTTP_BASE_URL,
   method: 'POST'
 })
 

@@ -1,6 +1,7 @@
 const WebSocket = require('ws')
+const { WS_BASE_URL } = require('../config')
 
-const ws = new WebSocket('ws://0.0.0.0:6700')
+const ws = new WebSocket(WS_BASE_URL)
 
 module.exports = {
   ws,
