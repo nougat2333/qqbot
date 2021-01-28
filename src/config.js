@@ -18,3 +18,5 @@ exports.scheduleMap = new Map([
   // 周一到周五的 12:30 和 18:30 提醒下班
   ['0 30 12,18 * * 1-5', require('./schedule/下班提醒')]
 ])
+
+exports.下班提醒_QQ号 = 397909414

@@ -1,6 +1,8 @@
+const config = require('../config')
+
 module.exports = send => {
   send('send_private_msg', {
-    user_id: 397909414,
+    user_id: config.下班提醒_QQ号,
     message: [
       {
         type: 'text',
