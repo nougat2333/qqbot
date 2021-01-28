@@ -6,7 +6,7 @@ module.exports = {
       const { data } = await axios('https://v1.alapi.cn/api/dog?format=text')
       return data
     } catch (e) {
-      return '就这?'
+      return '舔不动了!'
     }
   }
 }
