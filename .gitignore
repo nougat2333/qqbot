@@ -4,3 +4,5 @@ package-lock.json
 
 node_modules
 .idea
+go-cqhttp
+!go-cqhttp/.gitkeep
