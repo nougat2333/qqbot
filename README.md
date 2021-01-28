@@ -24,35 +24,19 @@
 
 > 因为 go-cqhttp 登录需要交互操作, pm2 不支持, 所以我这里用 screen 跑 go-cqhttp, 你也可以用其它方法后台运行
 
-## 代码说明
+## 开发说明
 
-### 监听用户消息, 被动回复的场景
+### 监听消息 listen(data => {})
 
-```js
-const { listen, send } = require('./bot/ws')
-```
+将根据 src/config.js 的 `handlerMap` 配置来触发 src/hander/\*.js
 
-- `listen(data => {})`: 监听所有消息, 具体信息可以打印 data 查看
-- `send(action, params)`: websocket 发送消息
+### 发送消息 send(action, params)
 
-### 定时发送/报警等, 主动推送的场景
+文档 https://docs.go-cqhttp.org/api
 
-```js
-const { send } = require('./bot/http')
-```
+### 定时任务 schedule()
 
-- `send(action, params)`: http 发送消息
-
-> 其中 action 和 params 可以查看 https://docs.go-cqhttp.org/api 文档进行开发
-
-### 判断开发或生产环境
-
-```js
-process.env.NODE_ENV === 'development' // 开发
-process.env.NODE_ENV === 'production' // 生产
-```
-
-> 有时候我们需要在不同环境, 读不同的配置或执行不同的逻辑
+将根据 src/config.js 的 `scheduleMap` 配置来触发 src/schedule/\*.js
 
 ## 示例截图
 
