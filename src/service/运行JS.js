@@ -19,6 +19,8 @@ async function request(options) {
     }
     // 禁止自动重定向
     options.maxRedirects = 0
+    // 请求超时
+    options.timeout = 5000
     return await axios(options)
   } catch (e) {
     return { data: e.message }
@@ -66,3 +68,13 @@ exports.exec = input => {
     }
   })
 }
+
+exports
+  .exec(
+    `js 
+get('https://youtube.com/').then(res => {
+	const $ = dom(res.data)
+	callback($('title').text())
+})`
+  )
+  .then(console.log)
