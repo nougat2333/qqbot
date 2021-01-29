@@ -68,13 +68,3 @@ exports.exec = input => {
     }
   })
 }
-
-exports
-  .exec(
-    `js 
-get('https://youtube.com/').then(res => {
-	const $ = dom(res.data)
-	callback($('title').text())
-})`
-  )
-  .then(console.log)
