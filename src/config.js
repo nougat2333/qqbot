@@ -9,6 +9,7 @@ exports.handlerAll = false
 
 // 正则匹配, 触发对应的回复
 exports.handlerMap = new Map([
+  [/^JS\s+/i, require('./handler/运行JS')],
   [/舔狗日记/, require('./handler/舔狗日记')],
   [/没起床/, require('./handler/没起床')]
 ])
@@ -19,4 +20,5 @@ exports.scheduleMap = new Map([
   ['0 30 12,18 * * 1-5', require('./schedule/下班提醒')]
 ])
 
+// 定时下班提醒的私聊 QQ 号码
 exports.下班提醒_QQ号 = 397909414

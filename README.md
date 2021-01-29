@@ -44,4 +44,6 @@
 
 ## 示例截图
 
+![运行JS](https://user-images.githubusercontent.com/8413791/106236994-dc618000-6238-11eb-8643-ed09cdc3a9da.png)
+
 ![舔狗日记](https://user-images.githubusercontent.com/8413791/105276494-7d6a8e00-5bdc-11eb-8212-26b1943e9742.png)
