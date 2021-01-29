@@ -37,7 +37,7 @@ function cleanInput(input) {
 
 // 防止返回内容过长 取前1000
 function cleanOutput(output) {
-  output = (output || '').toString()
+  output = String(output)
   if (output.length === 0) {
     return '别爱我 没结果'
   }
