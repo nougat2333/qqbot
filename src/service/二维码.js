@@ -15,7 +15,7 @@ exports.create = async text => {
   return new Promise((resolve, reject) => {
     const filename = path.join(tmpdir, `${Date.now()}.png`)
     const stream = fs.createWriteStream(filename)
-    qr.image(text.replace(/^(二维码|qr(code)?)\s+/, ''), {
+    qr.image(text.replace(/^(二维码|qr(code)?)\s+/i, ''), {
       type: 'png',
       size: 10,
       margin: 2
