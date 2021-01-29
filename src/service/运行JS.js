@@ -53,10 +53,11 @@ exports.exec = input => {
     try {
       const code = cleanInput(input)
       const vm = new VM(vmOptions)
+      const hasCallback = code.includes('callback(')
       const result = vm.run(
-        code.includes('callback(') ? `(function (callback) { ${code} })` : code
+        hasCallback ? `(function (callback) { ${code} })` : code
       )
-      return typeof result === 'function'
+      return typeof result === 'function' && hasCallback
         ? result(safeResolve)
         : safeResolve(result)
     } catch (e) {
