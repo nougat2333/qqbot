@@ -10,6 +10,7 @@ exports.handlerAll = false
 // 正则匹配, 触发对应的回复
 exports.handlerMap = new Map([
   [/^JS\s+/i, require('./handler/运行JS')],
+  [/^(二维码|qr(code)?)\s+/i, require('./handler/二维码')],
   [/舔狗日记/, require('./handler/舔狗日记')],
   [/没起床/, require('./handler/没起床')]
 ])
