@@ -1,6 +1,6 @@
 module.exports = ({ send, service, config }) => {
   send('send_private_msg', {
-    user_id: config.off_work.qq,
+    user_id: config.schedule.off_work.qq,
     message: [
       {
         type: 'text',
