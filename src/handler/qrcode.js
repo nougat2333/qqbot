@@ -3,6 +3,12 @@ exports.group = async ({ data, send, service }) => {
     group_id: data.group_id,
     message: [
       {
+        type: 'reply',
+        data: {
+          id: data.message_id
+        }
+      },
+      {
         type: 'image',
         data: {
           file: await service.qrcode.create(data.message)
