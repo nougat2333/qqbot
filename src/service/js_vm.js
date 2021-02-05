@@ -30,7 +30,7 @@ async function request(options) {
 // 替换 &
 function cleanInput(input) {
   return input
-    .replace(/^JS/i, '')
+    .replace(/^JS\s+/i, '')
     .replace(/&#91;/g, '[')
     .replace(/&#93;/g, ']')
     .replace(/&amp;/g, '&')
@@ -49,7 +49,7 @@ function cleanOutput(output) {
   return output.slice(0, 1000) + '\n(为了避免刷屏, 仅显示前 1000 字符)'
 }
 
-exports.exec = input => {
+exports.run = input => {
   return new Promise(resolve => {
     const safeResolve = output => resolve(cleanOutput(output))
     try {

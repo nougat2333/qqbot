@@ -1,25 +1,32 @@
 // 是否开发环境
-exports.isDev = process.env.NODE_ENV === 'development'
+exports.dev = process.env.NODE_ENV === 'development'
 
-// go-cqhttp websocket url
-exports.wsUrl = 'ws://0.0.0.0:6700'
+// 机器人配置
+exports.bot = {
+  // go-cqhttp websocket url
+  ws: 'ws://0.0.0.0:6700',
 
-// 是否允许同一条消息触发多个 handler, 一般不需要开启
-exports.handlerAll = false
+  // 消息处理: 正则匹配触发对应的回复
+  handler: new Map([
+    [/^JS\s+/i, require('./handler/js_vm')],
+    [/^(二维码|qr(code)?)\s+/i, require('./handler/qrcode')],
+    [/舔狗日记/, require('./handler/licking_dog')]
+  ]),
 
-// 正则匹配, 触发对应的回复
-exports.handlerMap = new Map([
-  [/^JS\s+/i, require('./handler/运行JS')],
-  [/^(二维码|qr(code)?)\s+/i, require('./handler/二维码')],
-  [/舔狗日记/, require('./handler/舔狗日记')],
-  [/没起床/, require('./handler/没起床')]
-])
+  // 定时任务: https://www.npmjs.com/package/node-cron
+  schedule: new Map([
+    // 周一到周五的 12:30 和 18:30 提醒下班
+    ['0 30 12,18 * * 1-5', require('./schedule/off_work')]
+  ])
+}
 
-// 定时任务 https://www.npmjs.com/package/node-cron
-exports.scheduleMap = new Map([
-  // 周一到周五的 12:30 和 18:30 提醒下班
-  ['0 30 12,18 * * 1-5', require('./schedule/下班提醒')]
-])
+// 消息处理配置
+exports.handler = {}
 
-// 定时下班提醒的私聊 QQ 号码
-exports.下班提醒_QQ号 = 397909414
+// 定时任务配置
+exports.schedule = {
+  // 下班提醒
+  off_work: {
+    qq: 397909414
+  }
+}

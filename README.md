@@ -6,7 +6,7 @@
 
 - 在 https://github.com/Mrs4s/go-cqhttp/releases 下载可执行文件, 放到 go-cqhttp 目录中, 并赋予执行权限
 
-- 安装 nodejs 环境 (建议 10.0 以上版本): 在根目录执行 `npm install` 安装依赖
+- 安装 nodejs 环境 (建议 12.0 以上版本): 在根目录执行 `npm install` 安装依赖
 
 ### 开发环境
 
@@ -26,13 +26,13 @@
 
 ## 开发说明
 
-请查看 src/index.js 代码
+请查看 `src/index.js` 和 `src/config.js` 代码
 
 ### 监听消息 listen(data => {})
 
 ### 消息处理 listen(handler)
 
-将根据 src/config.js 的 `handlerMap` 来触发 src/hander/\*.js
+将根据 `src/config.js` 的 `bot.handler` 来触发 `src/hander/*.js`
 
 ### 发送消息 send(action, params)
 
@@ -40,7 +40,12 @@
 
 ### 定时任务 schedule()
 
-将根据 src/config.js 的 `scheduleMap` 来触发 src/schedule/\*.js
+将根据 `src/config.js` 的 `bot.schedule` 来触发 `src/schedule/*.js`
+
+### 参数注入
+
+- 所有的 `src/handler/*.js` 会自动注入 `{data, send, service, config}`
+- 所有的 `src/schedule/*.js` 会自动注入 `{send, service, config}`
 
 ## 示例截图
 

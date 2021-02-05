@@ -1,6 +1,4 @@
-const 运行JS = require('../service/运行JS')
-
-exports.group = async (send, data) => {
+exports.group = async ({ data, send, service }) => {
   send('send_group_msg', {
     group_id: data.group_id,
     message: [
@@ -13,21 +11,21 @@ exports.group = async (send, data) => {
       {
         type: 'text',
         data: {
-          text: await 运行JS.exec(data.message)
+          text: await service.licking_dog.get()
         }
       }
     ]
   })
 }
 
-exports.private = async (send, data) => {
+exports.private = async ({ data, send, service }) => {
   send('send_private_msg', {
     user_id: data.user_id,
     message: [
       {
         type: 'text',
         data: {
-          text: await 运行JS.exec(data.message)
+          text: await service.licking_dog.get()
         }
       }
     ]
