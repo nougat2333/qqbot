@@ -1,7 +1,43 @@
-const { listen, handler, schedule } = require('./bot')
+const { listen, send } = require('./bot')
+const dog = require('./service/dog')
 
-// 监听消息 并按照 src/config.js 处理
-listen(handler)
+listen(async data => {
+  console.log(data)
 
-// 定时任务
-schedule()
+  // 他人发送消息带有 "舔狗" 二字
+  if (data.message.includes('舔狗')) {
+    if (data.message_type === 'group') {
+      // 群消息 回复
+      send('send_group_msg', {
+        group_id: data.group_id,
+        message: [
+          {
+            type: 'reply',
+            data: {
+              id: data.message_id
+            }
+          },
+          {
+            type: 'text',
+            data: {
+              text: await dog.get()
+            }
+          }
+        ]
+      })
+    } else if (data.message_type === 'private') {
+      // 私聊消息 回复
+      send('send_private_msg', {
+        user_id: data.user_id,
+        message: [
+          {
+            type: 'text',
+            data: {
+              text: await dog.get()
+            }
+          }
+        ]
+      })
+    }
+  }
+})
