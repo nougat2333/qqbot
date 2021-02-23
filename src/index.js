@@ -1,7 +1,7 @@
-const bot = require('./bot')
+const { ws, http } = require('./bot')
 const dog = require('./service/dog')
 
-bot.listen(async data => {
+ws.listen(async data => {
   console.log(data)
 
   if (!('message' in data)) {
@@ -12,7 +12,7 @@ bot.listen(async data => {
   if (data.message.includes('舔狗')) {
     if (data.message_type === 'group') {
       // 群消息 回复
-      bot.send('send_group_msg', {
+      ws.send('send_group_msg', {
         group_id: data.group_id,
         message: [
           {
@@ -31,7 +31,7 @@ bot.listen(async data => {
       })
     } else if (data.message_type === 'private') {
       // 私聊消息 回复
-      bot.send('send_private_msg', {
+      ws.send('send_private_msg', {
         user_id: data.user_id,
         message: [
           {
